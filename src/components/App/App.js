@@ -60,11 +60,11 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
           {/* Show-all */}
-          <AuthenticatedRoute user={user} exact path='/' render={() => (
+          <AuthenticatedRoute exact user={user} path='/' render={() => (
             <List msgAlert={this.msgAlert} user={user} />
           )} />
           {/* Item-create */}
-          <AuthenticatedRoute user={user} path='/item-create' render={(props) => (
+          <AuthenticatedRoute exact user={user} path='/item-create' render={(props) => (
             <ItemCreate msgAlert={this.msgAlert} user={user} history={props.history} />
           )} />
           {/* Show-single-item */}
@@ -72,7 +72,7 @@ class App extends Component {
             <Item msgAlert={this.msgAlert} user={user} />
           )} />
           {/* Edit-single-item */}
-          <AuthenticatedRoute user={user} path='/item/:id/edit' render={() => (
+          <AuthenticatedRoute exact user={user} path='/item/:id/edit' render={() => (
             <ItemEdit msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
