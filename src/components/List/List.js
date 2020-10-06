@@ -6,7 +6,6 @@ import apiUrl from '../../apiConfig'
 
 function List (props) {
   const [list, setList] = useState([])
-  // const [load, setLoad] = useState(false)
 
   useEffect(() => {
     axios({
@@ -17,7 +16,6 @@ function List (props) {
       }
     })
       .then(res => setList(res.data.items))
-      // .then(res => setList(res.data.items))
   }, [])
 
   return (

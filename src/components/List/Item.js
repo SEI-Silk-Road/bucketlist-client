@@ -39,6 +39,32 @@ class Item extends Component {
         })
       ))
   }
+
+  handleDelete = event => {
+    axios({
+      url: apiUrl + '/items/' + this.props.match.params.id,
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
+      .then(() => this.props.history.push('/'))
+      .then(() => (
+        this.props.msgAlert({
+          heading: 'Delete Success',
+          variant: 'success',
+          message: 'An item has been successfully deleted!'
+        })
+      ))
+      .catch(() => (
+        this.props.msgAlert({
+          heading: 'Delete Failure ',
+          variant: 'danger',
+          message: 'An item has not been deleted!'
+        })
+      ))
+  }
+
   render () {
     const { item } = this.state
     return (
@@ -48,6 +74,7 @@ class Item extends Component {
         <Link to={`/item/${this.props.match.params.id}/edit`}>
           <Button>Edit</Button>
         </Link>
+        <Button onClick={this.handleDelete}>Delete</Button>
       </Fragment>
     )
   }
