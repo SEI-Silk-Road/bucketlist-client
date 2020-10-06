@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
@@ -23,7 +24,9 @@ function List (props) {
     <ul>
       {list.map(item => (
         <li key={item._id}>
-          {item.title}
+          <Link to={`/item/${item._id}`}>
+            {item.title}
+          </Link>
         </li>
       ))}
     </ul>

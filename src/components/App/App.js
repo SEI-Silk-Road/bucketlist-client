@@ -12,6 +12,7 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 import List from '../List/List'
 import Item from '../List/Item'
 import ItemCreate from '../List/ItemCreate'
+import ItemEdit from '../List/ItemEdit'
 
 class App extends Component {
   constructor () {
@@ -58,17 +59,21 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-
+          {/* Show-all */}
           <AuthenticatedRoute user={user} exact path='/' render={() => (
             <List msgAlert={this.msgAlert} user={user} />
           )} />
-
-          <AuthenticatedRoute user={user} path='/item' render={() => (
-            <Item msgAlert={this.msgAlert} user={user} />
-          )} />
-
+          {/* Item-create */}
           <AuthenticatedRoute user={user} path='/item-create' render={(props) => (
             <ItemCreate msgAlert={this.msgAlert} user={user} history={props.history} />
+          )} />
+          {/* Show-single-item */}
+          <AuthenticatedRoute exact user={user} path='/item/:id' render={() => (
+            <Item msgAlert={this.msgAlert} user={user} />
+          )} />
+          {/* Edit-single-item */}
+          <AuthenticatedRoute user={user} path='/item/:id/edit' render={() => (
+            <ItemEdit msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>
