@@ -1,49 +1,60 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-function List (props) {
-  const [list, setList] = useState([])
+class List extends React.Component {
+  constructor (props) {
+    super(props)
 
-  useEffect(() => {
+    this.state = {
+      list: []
+    }
+  }
+
+  componentDidMount () {
     axios({
       url: apiUrl + '/items',
       method: 'GET',
       headers: {
-        'Authorization': `Token token=${props.user.token}`
+        'Authorization': `Token token=${this.props.user.token}`
       }
     })
-      .then(res => setList(res.data.items))
-  }, [])
+      .then(res => this.setState({ list: res.data.items }))
+  }
 
-  function handleClick (event) {
+  handleClick = (index) => {
+    console.log(index)
     // finding the index of the item in the list array
-    const foundItemIndex = list.findIndex(item => item._id === event.target.id)
+    const foundItemIndex = this.state.list.findIndex(item => item._id === event.target.id)
     // making a copy of the list of items
-    const copyList = list
+    const copyList = this.state.list
     // finding the targeted item in the copy array and then setting the value of
     // isCompleted on the targeted item to the opposite
     copyList[foundItemIndex] = { ...copyList[foundItemIndex],
       isCompleted: !copyList[foundItemIndex].isCompleted }
     // console.log('our copy list\'s index ', copyList[foundItemIndex])
     console.log('our copy list ', copyList)
-    return setList(copyList)
+    this.setState(copyList)
   }
 
-  return (
-    <ul>
-      {list.map(item => (
-        <li key={item._id}>
-          <Link to={`/item/${item._id}`} className={item.isCompleted ? '' : 'complete'}>
-            {item.title}
-          </Link>
-          <button id={item._id} onClick={handleClick}>Completed</button>
-        </li>
-      ))}
-    </ul>
-  )
+  render () {
+    const { list } = this.state
+
+    return (
+      <ul>
+        {list.map((item, index) => (
+          <li key={item._id}>
+            <Link to={`/item/${item._id}`} className={item.isCompleted ? 'complete' : ''}>
+              {item.title}
+            </Link>
+            <button id={item._id} onClick={() => this.handleClick(index)}>Completed</button>
+          </li>
+        ))}
+      </ul>
+    )
+  }
 }
 
 export default List
