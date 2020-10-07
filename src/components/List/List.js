@@ -33,6 +33,19 @@ class List extends React.Component {
       isCompleted: !copyList[index].isCompleted }
 
     this.setState(copyList)
+
+    axios({
+      url: apiUrl + '/items/' + event.target.id,
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      },
+      data: {
+        item: {
+          isCompleted: this.state.list[index].isCompleted
+        }
+      }
+    })
   }
 
   render () {
@@ -45,7 +58,7 @@ class List extends React.Component {
             <Link to={`/item/${item._id}`} className={item.isCompleted ? 'complete' : ''}>
               {item.title}
             </Link>
-            <input type='checkbox' onClick={() => this.handleClick(index)} />
+            <input type='checkbox' id={item._id} onClick={() => this.handleClick(index)} />
           </li>
         ))}
       </ul>
