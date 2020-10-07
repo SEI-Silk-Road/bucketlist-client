@@ -33,6 +33,8 @@ class List extends React.Component {
       isCompleted: !copyList[index].isCompleted }
 
     this.setState(copyList)
+
+    
   }
 
   render () {
