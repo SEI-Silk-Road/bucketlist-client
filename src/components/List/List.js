@@ -25,17 +25,13 @@ class List extends React.Component {
   }
 
   handleClick = (index) => {
-    console.log(index)
-    // finding the index of the item in the list array
-    const foundItemIndex = this.state.list.findIndex(item => item._id === event.target.id)
     // making a copy of the list of items
     const copyList = this.state.list
     // finding the targeted item in the copy array and then setting the value of
     // isCompleted on the targeted item to the opposite
-    copyList[foundItemIndex] = { ...copyList[foundItemIndex],
-      isCompleted: !copyList[foundItemIndex].isCompleted }
-    // console.log('our copy list\'s index ', copyList[foundItemIndex])
-    console.log('our copy list ', copyList)
+    copyList[index] = { ...copyList[index],
+      isCompleted: !copyList[index].isCompleted }
+
     this.setState(copyList)
   }
 
@@ -49,7 +45,7 @@ class List extends React.Component {
             <Link to={`/item/${item._id}`} className={item.isCompleted ? 'complete' : ''}>
               {item.title}
             </Link>
-            <button id={item._id} onClick={() => this.handleClick(index)}>Completed</button>
+            <input type='checkbox' onClick={() => this.handleClick(index)} />
           </li>
         ))}
       </ul>
