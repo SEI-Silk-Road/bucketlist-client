@@ -35,7 +35,8 @@ function ItemCreate (props) {
       data: {
         item: {
           title: input.title,
-          text: input.text
+          text: input.text,
+          isCompleted: false
         }
       }
     })

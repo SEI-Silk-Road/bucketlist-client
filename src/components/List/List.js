@@ -18,13 +18,28 @@ function List (props) {
       .then(res => setList(res.data.items))
   }, [])
 
+  function handleClick (event) {
+    // finding the index of the item in the list array
+    const foundItemIndex = list.findIndex(item => item._id === event.target.id)
+    // making a copy of the list of items
+    const copyList = list
+    // finding the targeted item in the copy array and then setting the value of
+    // isCompleted on the targeted item to the opposite
+    copyList[foundItemIndex] = { ...copyList[foundItemIndex],
+      isCompleted: !copyList[foundItemIndex].isCompleted }
+    // console.log('our copy list\'s index ', copyList[foundItemIndex])
+    console.log('our copy list ', copyList)
+    return setList(copyList)
+  }
+
   return (
     <ul>
       {list.map(item => (
         <li key={item._id}>
-          <Link to={`/item/${item._id}`}>
+          <Link to={`/item/${item._id}`} className={item.isCompleted ? '' : 'complete'}>
             {item.title}
           </Link>
+          <button id={item._id} onClick={handleClick}>Completed</button>
         </li>
       ))}
     </ul>
