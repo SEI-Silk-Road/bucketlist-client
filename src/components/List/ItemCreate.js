@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
@@ -6,23 +6,27 @@ import apiUrl from '../../apiConfig'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-function ItemCreate (props) {
-  // create state to store title and text input
-  const [input, setInput] = useState({
-    title: '',
-    text: ''
-  })
+import { withRouter } from 'react-router'
 
+class ItemCreate extends React.Component {
+  constructor (props) {
+    super(props)
+    // create state to store title and text input
+    this.state = {
+      title: '',
+      text: ''
+    }
+  }
   // on change happening
-  const handleChange = event => {
+  handleChange = event => {
     // grab the name and the value of from the Form
     const { name, value } = event.target
 
     // set new value into the state
-    setInput({ ...input, [name]: value })
+    this.setState({ [name]: value })
   }
 
-  const handleSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault()
 
     // make the api call
@@ -30,27 +34,27 @@ function ItemCreate (props) {
       url: apiUrl + '/items',
       method: 'POST',
       headers: {
-        'Authorization': `Token token=${props.user.token}`
+        'Authorization': `Token token=${this.props.user.token}`
       },
       data: {
         item: {
-          title: input.title,
-          text: input.text,
+          title: this.state.title,
+          text: this.state.text,
           isCompleted: false
         }
       }
     })
       // message for success
       .then(() => (
-        props.msgAlert({
+        this.props.msgAlert({
           heading: 'Create Success',
           variant: 'success',
           message: 'An item has been successfully added to your bucketlist!'
         })
       ))
-      .then(() => props.history.push('/'))
+      .then(() => this.props.history.push('/'))
       .catch(() => (
-        props.msgAlert({
+        this.props.msgAlert({
           heading: 'Create Failure',
           variant: 'danger',
           message: 'Error 404!!!!!!'
@@ -58,40 +62,42 @@ function ItemCreate (props) {
       ))
   }
 
-  return (
-    <Fragment>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="title">
-          <Form.Label>Title</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            name="title"
-            value={input.title}
-            placeholder="Enter title"
-            onChange={handleChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="text">
-          <Form.Label>Description</Form.Label>
-          <Form.Control
-            required
-            type='text'
-            name="text"
-            value={input.text}
-            placeholder="Enter description for your event"
-            onChange={handleChange}
-          />
-        </Form.Group>
-        <Button
-          variant="primary"
-          type="submit"
-        >
-          Submit
-        </Button>
-      </Form>
-    </Fragment>
-  )
+  render () {
+    return (
+      <Fragment>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="title">
+            <Form.Label>Title</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="title"
+              value={this.state.title}
+              placeholder="Enter title"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="text">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              required
+              type='text'
+              name="text"
+              value={this.state.text}
+              placeholder="Enter description for your event"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Button
+            variant="primary"
+            type="submit"
+          >
+            Submit
+          </Button>
+        </Form>
+      </Fragment>
+    )
+  }
 }
 
-export default ItemCreate
+export default withRouter(ItemCreate)
