@@ -68,14 +68,14 @@ class Item extends Component {
   render () {
     const { item } = this.state
     return (
-      <div className='edit-prep-screen'>
+      <div className='box'>
         <h4>{item.title}</h4>
         <p>{item.text}</p>
         <div>
           <Link to={`/item/${this.props.match.params.id}/edit`}>
-            <Button className='edit-button'>Edit</Button>
+            <Button className='button'>Edit</Button>
           </Link>
-          <Button className='delete-button'onClick={this.handleDelete}>Delete</Button>
+          <Button className='button'onClick={this.handleDelete}>Delete</Button>
         </div>
       </div>
     )

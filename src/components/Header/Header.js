@@ -24,7 +24,7 @@ const authenticatedOptions = (
 // )
 
 const Header = ({ user }) => (
-  <Navbar bg="dark" variant="dark" expand="md">
+  <Navbar className='nav' variant='dark' expand="md">
     <Navbar.Brand href="#/list">
       <img src='https://www.free-emoticons.com/files/culture-emoticons/5474.png'/>
     </Navbar.Brand>

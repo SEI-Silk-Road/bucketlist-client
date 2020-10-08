@@ -1,4 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
+.nav{
+  background-color: #191A24;
+}
 
 .complete {
   text-decoration: line-through;
@@ -7,36 +10,47 @@
 
 .box {
 	margin: 4rem auto;
-	padding: 2rem 3rem 3rem;
-	max-width: 500px;
-  background: rebeccapurple;
+	padding: 3rem 5rem 3rem 3rem;
+	max-width: 650px;
+  background: #191A24;
 	color: #FFF;
-	box-shadow: -20px -20px 0px 0px rgba(100,100,100,.1);
+  border-radius: 15px;
+  border: 20px solid #38A3A5;
 
   h1 {
+    text-align: center;
    font-weight: normal;
    font-size: 2.6rem;
    letter-spacing: 0.05em;
    border-bottom: 3px solid rgba(255,255,255,.3);
   };
 
-  .item-create-button {
+  .button {
     background-color: white;
     border-color: white;
     color: rgba(120,127,135,1);
+    border: outset;
+    margin: 7px;
+    padding: 5px;
   };
 
   li {
     display: flex;
-    margin: 0 -.5rem 3px;
+    margin: 3px;
     padding: 1.1rem 3rem;
     justify-content: space-between;
     align-items: center;
     background: rgba(255,255,255,0.1);
+    border-radius: 10px;
   };
 
   a {
     color: #FFF;
+  };
+
+  .edit-form {
+    display: block;
+    padding-left: 35px;
   }
 }
 
@@ -54,25 +68,6 @@
 }
 
 .welcome-button2 {
-  border: outset;
-  margin: 7px;
-  padding: 17px;
-}
-
-.edit-prep-screen {
-  text-align: center;
-  width: 80vw;
-  height: 500px;
-  padding-top: 250px;
-}
-
-.edit-button {
-  border: outset;
-  margin: 7px;
-  padding: 17px;
-}
-
-.delete-button {
   border: outset;
   margin: 7px;
   padding: 17px;
