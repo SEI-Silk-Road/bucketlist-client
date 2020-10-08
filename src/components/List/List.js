@@ -33,8 +33,6 @@ class List extends React.Component {
       isCompleted: !copyList[index].isCompleted }
 
     this.setState(copyList)
-
-    
   }
 
   render () {
@@ -47,7 +45,7 @@ class List extends React.Component {
             <Link to={`/item/${item._id}`} className={item.isCompleted ? 'complete' : ''}>
               {item.title}
             </Link>
-            <input type='checkbox' onClick={() => this.handleClick(index)} />
+            <input type='checkbox' id={item._id} onClick={() => this.handleClick(index)} />
           </li>
         ))}
       </ul>
