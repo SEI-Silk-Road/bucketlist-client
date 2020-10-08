@@ -11,7 +11,6 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 
 import List from '../List/List'
 import Item from '../List/Item'
-import ItemCreate from '../List/ItemCreate'
 import ItemEdit from '../List/ItemEdit'
 
 class App extends Component {
@@ -62,10 +61,6 @@ class App extends Component {
           {/* Show-all */}
           <AuthenticatedRoute exact user={user} path='/' render={() => (
             <List msgAlert={this.msgAlert} user={user} />
-          )} />
-          {/* Item-create */}
-          <AuthenticatedRoute exact user={user} path='/item-create' render={() => (
-            <ItemCreate msgAlert={this.msgAlert} user={user} />
           )} />
           {/* Show-single-item */}
           <AuthenticatedRoute exact user={user} path='/item/:id' render={() => (

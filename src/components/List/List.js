@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import ItemCreate from './ItemCreate'
 
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
@@ -22,6 +23,19 @@ class List extends React.Component {
       }
     })
       .then(res => this.setState({ list: res.data.items }))
+  }
+
+  componentDidUpdate (prevProps) {
+    if (this.props !== prevProps) {
+      axios({
+        url: apiUrl + '/items',
+        method: 'GET',
+        headers: {
+          'Authorization': `Token token=${this.props.user.token}`
+        }
+      })
+        .then(res => this.setState({ list: res.data.items }))
+    }
   }
 
   handleClick = (index) => {
@@ -52,16 +66,22 @@ class List extends React.Component {
     const { list } = this.state
 
     return (
-      <ul>
-        {list.map((item, index) => (
-          <li key={item._id}>
-            <Link to={`/item/${item._id}`} className={item.isCompleted ? 'complete' : ''}>
-              {item.title}
-            </Link>
-            <input type='checkbox' id={item._id} onClick={() => this.handleClick(index)} />
-          </li>
-        ))}
-      </ul>
+      <Fragment>
+        <div className='box'>
+          <ul>
+            <h1>Your Bucket List</h1>
+            {list.map((item, index) => (
+              <li key={item._id}>
+                <Link to={`/item/${item._id}`} className={item.isCompleted ? 'complete' : ''}>
+                  {item.title}
+                </Link>
+                <input type='checkbox' id={item._id} checked={item.isCompleted} onClick={() => this.handleClick(index)} />
+              </li>
+            ))}
+          </ul>
+          <ItemCreate msgAlert={this.props.msgAlert} user={this.props.user} />
+        </div>
+      </Fragment>
     )
   }
 }

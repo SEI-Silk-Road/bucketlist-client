@@ -17,6 +17,7 @@ class ItemCreate extends React.Component {
       text: ''
     }
   }
+
   // on change happening
   handleChange = event => {
     // grab the name and the value of from the Form
@@ -52,7 +53,10 @@ class ItemCreate extends React.Component {
           message: 'An item has been successfully added to your bucketlist!'
         })
       ))
-      .then(() => this.props.history.push('/'))
+      .then(() => this.setState({
+        title: '',
+        text: ''
+      }))
       .catch(() => (
         this.props.msgAlert({
           heading: 'Create Failure',
@@ -67,24 +71,24 @@ class ItemCreate extends React.Component {
       <Fragment>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="title">
-            <Form.Label>Title</Form.Label>
+            <Form.Label>Add to your bucketlist</Form.Label>
             <Form.Control
               required
               type="text"
               name="title"
               value={this.state.title}
-              placeholder="Enter title"
+              placeholder="What's your next adventure?"
               onChange={this.handleChange}
             />
           </Form.Group>
           <Form.Group controlId="text">
-            <Form.Label>Description</Form.Label>
             <Form.Control
               required
+              as='textarea'
               type='text'
               name="text"
               value={this.state.text}
-              placeholder="Enter description for your event"
+              placeholder="Tell us about it"
               onChange={this.handleChange}
             />
           </Form.Group>

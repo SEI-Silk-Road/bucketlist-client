@@ -2,4 +2,34 @@
 
 .complete {
   text-decoration: line-through;
+  // animation:strikeitem .3s ease-out 0s forwards;
+}
+
+.box {
+	margin:4rem auto;
+	padding:2rem 3rem 3rem;
+	max-width:500px;
+	background:#FF6666;
+	color:#FFF;
+	box-shadow:-20px -20px 0px 0px rgba(100,100,100,.1);
+
+  h1 {
+   font-weight:normal;
+   font-size:2.6rem;
+   letter-spacing:0.05em;
+   border-bottom:3px solid rgba(255,255,255,.3);
+  };
+
+  li {
+    display:flex;
+    margin:0 -3rem 4px;
+    padding:1.1rem 3rem;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,0.1);
+  };
+
+  a {
+    color:#FFF;
+  }
 }
