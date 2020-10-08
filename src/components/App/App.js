@@ -11,7 +11,6 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 
 import List from '../List/List'
 import Item from '../List/Item'
-import ItemCreate from '../List/ItemCreate'
 import ItemEdit from '../List/ItemEdit'
 
 class App extends Component {
@@ -47,10 +46,10 @@ class App extends Component {
           />
         ))}
         <main className="container">
-          <Route path='/sign-up' render={() => (
+          <Route exact path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
-          <Route path='/sign-in' render={() => (
+          <Route exact path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
@@ -60,12 +59,8 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
           {/* Show-all */}
-          <AuthenticatedRoute exact user={user} path='/' render={() => (
+          <AuthenticatedRoute exact user={user} path='/home' render={() => (
             <List msgAlert={this.msgAlert} user={user} />
-          )} />
-          {/* Item-create */}
-          <AuthenticatedRoute exact user={user} path='/item-create' render={() => (
-            <ItemCreate msgAlert={this.msgAlert} user={user} />
           )} />
           {/* Show-single-item */}
           <AuthenticatedRoute exact user={user} path='/item/:id' render={() => (
