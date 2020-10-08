@@ -64,8 +64,8 @@ class App extends Component {
             <List msgAlert={this.msgAlert} user={user} />
           )} />
           {/* Item-create */}
-          <AuthenticatedRoute exact user={user} path='/item-create' render={(props) => (
-            <ItemCreate msgAlert={this.msgAlert} user={user} history={props.history} />
+          <AuthenticatedRoute exact user={user} path='/item-create' render={() => (
+            <ItemCreate msgAlert={this.msgAlert} user={user} />
           )} />
           {/* Show-single-item */}
           <AuthenticatedRoute exact user={user} path='/item/:id' render={() => (

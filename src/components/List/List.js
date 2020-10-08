@@ -33,19 +33,6 @@ class List extends React.Component {
       isCompleted: !copyList[index].isCompleted }
 
     this.setState(copyList)
-
-    axios({
-      url: apiUrl + '/items/' + event.target.id,
-      method: 'PATCH',
-      headers: {
-        'Authorization': `Token token=${this.props.user.token}`
-      },
-      data: {
-        item: {
-          isCompleted: this.state.list[index].isCompleted
-        }
-      }
-    })
   }
 
   render () {
