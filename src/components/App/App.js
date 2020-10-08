@@ -8,6 +8,7 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
+import WelcomeButtons from '../Home/WelcomeButtons'
 
 import List from '../List/List'
 import Item from '../List/Item'
@@ -59,7 +60,7 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
           {/* Show-all */}
-          <AuthenticatedRoute exact user={user} path='/home' render={() => (
+          <AuthenticatedRoute exact user={user} path='/list' render={() => (
             <List msgAlert={this.msgAlert} user={user} />
           )} />
           {/* Show-single-item */}
@@ -70,6 +71,7 @@ class App extends Component {
           <AuthenticatedRoute exact user={user} path='/item/:id/edit' render={() => (
             <ItemEdit msgAlert={this.msgAlert} user={user} />
           )} />
+          <Route exact path='/' component={WelcomeButtons} />
         </main>
       </Fragment>
     )

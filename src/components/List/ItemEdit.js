@@ -76,7 +76,7 @@ class ItemEdit extends Component {
         }
       }
     })
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/list'))
       .then(() => this.props.msgAlert({
         heading: 'Edit Success',
         variant: 'success',

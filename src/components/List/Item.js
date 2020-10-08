@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import { withRouter } from 'react-router'
@@ -48,7 +48,7 @@ class Item extends Component {
         'Authorization': `Token token=${this.props.user.token}`
       }
     })
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/list'))
       .then(() => (
         this.props.msgAlert({
           heading: 'Delete Success',
@@ -68,14 +68,16 @@ class Item extends Component {
   render () {
     const { item } = this.state
     return (
-      <Fragment>
-        {item.title}<br />
-        {item.text}
-        <Link to={`/item/${this.props.match.params.id}/edit`}>
-          <Button>Edit</Button>
-        </Link>
-        <Button onClick={this.handleDelete}>Delete</Button>
-      </Fragment>
+      <div className='edit-prep-screen'>
+        <h4>{item.title}</h4>
+        <p>{item.text}</p>
+        <div>
+          <Link to={`/item/${this.props.match.params.id}/edit`}>
+            <Button className='edit-button'>Edit</Button>
+          </Link>
+          <Button className='delete-button'onClick={this.handleDelete}>Delete</Button>
+        </div>
+      </div>
     )
   }
 }
