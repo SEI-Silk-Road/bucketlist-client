@@ -92,8 +92,7 @@ class ItemCreate extends React.Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button
-            variant="primary"
+          <Button className='item-create-button'
             type="submit"
           >
             Submit

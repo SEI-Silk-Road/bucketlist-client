@@ -6,30 +6,74 @@
 }
 
 .box {
-	margin:4rem auto;
-	padding:2rem 3rem 3rem;
-	max-width:500px;
-	background:#FF6666;
-	color:#FFF;
-	box-shadow:-20px -20px 0px 0px rgba(100,100,100,.1);
+	margin: 4rem auto;
+	padding: 2rem 3rem 3rem;
+	max-width: 500px;
+  background: rebeccapurple;
+	color: #FFF;
+	box-shadow: -20px -20px 0px 0px rgba(100,100,100,.1);
 
   h1 {
-   font-weight:normal;
-   font-size:2.6rem;
-   letter-spacing:0.05em;
-   border-bottom:3px solid rgba(255,255,255,.3);
+   font-weight: normal;
+   font-size: 2.6rem;
+   letter-spacing: 0.05em;
+   border-bottom: 3px solid rgba(255,255,255,.3);
+  };
+
+  .item-create-button {
+    background-color: white;
+    border-color: white;
+    color: rgba(120,127,135,1);
   };
 
   li {
-    display:flex;
-    margin:0 -3rem 4px;
-    padding:1.1rem 3rem;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(255,255,255,0.1);
+    display: flex;
+    margin: 0 -.5rem 3px;
+    padding: 1.1rem 3rem;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
   };
 
   a {
-    color:#FFF;
+    color: #FFF;
   }
+}
+
+.welcome-buttons-div {
+  text-align: center;
+  width: 1100px;
+  height: 500px;
+  padding-top: 250px;
+}
+
+.welcome-button1 {
+  border: outset;
+  margin: 7px;
+  padding: 17px;
+}
+
+.welcome-button2 {
+  border: outset;
+  margin: 7px;
+  padding: 17px;
+}
+
+.edit-prep-screen {
+  text-align: center;
+  width: 80vw;
+  height: 500px;
+  padding-top: 250px;
+}
+
+.edit-button {
+  border: outset;
+  margin: 7px;
+  padding: 17px;
+}
+
+.delete-button {
+  border: outset;
+  margin: 7px;
+  padding: 17px;
 }
