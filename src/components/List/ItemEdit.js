@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
 import { withRouter } from 'react-router'
 
@@ -91,7 +91,7 @@ class ItemEdit extends Component {
 
   render () {
     return (
-      <Fragment>
+      <div className='box'>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
@@ -109,6 +109,7 @@ class ItemEdit extends Component {
             <Form.Control
               required
               type='text'
+              as='textarea'
               name="text"
               value={this.state.item.text}
               placeholder="Enter description for your event"
@@ -116,13 +117,13 @@ class ItemEdit extends Component {
             />
           </Form.Group>
           <Button
-            variant="primary"
+            className='button'
             type="submit"
           >
             Submit
           </Button>
         </Form>
-      </Fragment>
+      </div>
     )
   }
 }
