@@ -14,7 +14,7 @@ class List extends React.Component {
     this.state = {
       list: [],
       currentPage: 1,
-      itemsPerPage: 5
+      itemsPerPage: 4
     }
   }
 
