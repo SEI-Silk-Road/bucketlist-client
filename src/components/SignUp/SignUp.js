@@ -93,7 +93,7 @@ class SignUp extends Component {
             >
               Submit
             </Button>
-            <Link to='/sign-in'>Already have an account?</Link>
+            <Link to='/sign-in' className='itemLink'>Already have an account?</Link>
           </Form>
         </div>
       </div>

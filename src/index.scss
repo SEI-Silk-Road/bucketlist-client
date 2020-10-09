@@ -18,7 +18,7 @@
   border: 20px solid #38A3A5;
 
   h1 {
-    text-align: center;
+   text-align: center;
    font-weight: normal;
    font-size: 2.6rem;
    letter-spacing: 0.05em;
@@ -34,7 +34,7 @@
     padding: 5px;
   };
 
-  li {
+  .items {
     display: flex;
     margin: 3px;
     padding: 1.1rem 3rem;
@@ -42,10 +42,6 @@
     align-items: center;
     background: rgba(255,255,255,0.1);
     border-radius: 10px;
-  };
-
-  a {
-    color: #FFF;
   };
 
   .edit-form {
@@ -56,19 +52,21 @@
 
 .welcome-buttons-div {
   text-align: center;
-  width: 1100px;
+  width: 100%;
   height: 500px;
   padding-top: 250px;
 }
 
-.welcome-button1 {
+.welcome-button {
   border: outset;
   margin: 7px;
   padding: 17px;
 }
 
-.welcome-button2 {
-  border: outset;
-  margin: 7px;
-  padding: 17px;
+.itemLink {
+  color: #FFF;
+}
+
+.paginationButtons {
+  color: black;
 }
