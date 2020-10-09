@@ -1,16 +1,20 @@
-import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import ItemCreate from './ItemCreate'
 
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+
+import ItemsOnCurrentPage from '../Pagination/ItemsOnCurrentPage'
+import Pagination from '../Pagination/Pagination'
 
 class List extends React.Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      list: []
+      list: [],
+      currentPage: 1,
+      itemsPerPage: 5
     }
   }
 
@@ -46,7 +50,7 @@ class List extends React.Component {
     copyList[index] = { ...copyList[index],
       isCompleted: !copyList[index].isCompleted }
 
-    this.setState(copyList)
+    this.setState({ list: copyList })
 
     axios({
       url: apiUrl + '/items/' + event.target.id,
@@ -62,28 +66,32 @@ class List extends React.Component {
     })
   }
 
+  paginate = number => {
+    this.setState({ currentPage: number })
+  }
+
   render () {
-    const { list } = this.state
+    // get current posts
+    const indexOfLastPost = this.state.currentPage * this.state.itemsPerPage
+    const indexOfFirstPost = indexOfLastPost - this.state.itemsPerPage
+    const currentItems = this.state.list.slice(indexOfFirstPost, indexOfLastPost)
 
     return (
-      <Fragment>
-        <div className='box'>
-          <ul>
-            <h1>Your Bucket List</h1>
-            {list.map((item, index) => (
-              <li key={item._id}>
-                <Link to={`/item/${item._id}`} className={item.isCompleted ? 'complete' : ''}>
-                  {item.title}
-                </Link>
-                <input type='checkbox' id={item._id} readOnly checked={item.isCompleted} onClick={() => this.handleClick(index)} />
-              </li>
-            ))}
-          </ul>
-          <div className='edit-form'>
-            <ItemCreate msgAlert={this.props.msgAlert} user={this.props.user} />
-          </div>
+      <div className='box'>
+        <ul>
+          <h1>Your Bucket List</h1>
+          {/* Call the component to show items based on current page */}
+          <ItemsOnCurrentPage currentPage={this.state.currentPage} currentItems={currentItems} handleClick={this.handleClick}/>
+        </ul>
+        <Pagination
+          paginate={this.paginate}
+          itemsPerPage={this.state.itemsPerPage}
+          totalItems={this.state.list.length}
+        />
+        <div className='edit-form'>
+          <ItemCreate msgAlert={this.props.msgAlert} user={this.props.user} />
         </div>
-      </Fragment>
+      </div>
     )
   }
 }
