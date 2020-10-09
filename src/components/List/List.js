@@ -1,11 +1,9 @@
 import React from 'react'
 import ItemCreate from './ItemCreate'
+import { Link } from 'react-router-dom'
 
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-
-import ItemsOnCurrentPage from '../Pagination/ItemsOnCurrentPage'
-import Pagination from '../Pagination/Pagination'
 
 class List extends React.Component {
   constructor (props) {
@@ -44,19 +42,13 @@ class List extends React.Component {
 
   handleClick = (index) => {
     // making a copy of the list of items
-    console.log('This is the state', this.state.list)
-    const updatedObject = Object.assign({}, this.state.list[index])
-    console.log(updatedObject)
     const copyList = this.state.list.slice()
-    console.log('This is the copy', copyList)
-    console.log('This is isCompleted on secleted object', updatedObject.isCompleted)
-    updatedObject.isCompleted = !updatedObject.isCompleted
-    console.log('Did I change', updatedObject)
+
     // finding the targeted item in the copy array and then setting the value of
     // isCompleted on the targeted item to the opposite
-    copyList.splice(index, 1, updatedObject)
-    console.log('I am the copyList[index] that was clicked', copyList[index])
-    this.setState({ list: copyList }, () => console.log('I am the updated state....', this.state.list))
+    copyList[index].isCompleted = !copyList[index].isCompleted
+
+    this.setState({ list: copyList })
 
     axios({
       url: apiUrl + '/items/' + event.target.id,
@@ -77,24 +69,25 @@ class List extends React.Component {
   }
 
   render () {
-    // get current posts
-    const indexOfLastPost = this.state.currentPage * this.state.itemsPerPage
-    const indexOfFirstPost = indexOfLastPost - this.state.itemsPerPage
-    const currentItems = this.state.list.slice(indexOfFirstPost, indexOfLastPost)
-
     return (
       <div className='box'>
         <ul>
           <h1>Your Bucket List</h1>
           {/* Call the component to show items based on current page */}
-          <ItemsOnCurrentPage currentPage={this.state.currentPage} currentItems={currentItems} handleClick={this.handleClick}/>
+          {this.state.list.map((item, index) => (
+            <li className={item.isCompleted ? 'dimmed items' : 'items'} key={item._id}>
+              <Link to={`/item/${item._id}`} className='itemLink'>
+                <span className={item.isCompleted ? 'complete' : ''}>{item.title}</span>
+              </Link>
+              <input
+                type='checkbox'
+                id={item._id}
+                readOnly
+                checked={item.isCompleted}
+                onClick={() => this.handleClick(index)} />
+            </li>
+          ))}
         </ul>
-        <Pagination
-          currentPage={this.state.currentPage}
-          paginate={this.paginate}
-          itemsPerPage={this.state.itemsPerPage}
-          totalItems={this.state.list.length}
-        />
         <div className='edit-form'>
           <ItemCreate msgAlert={this.props.msgAlert} user={this.props.user} />
         </div>
