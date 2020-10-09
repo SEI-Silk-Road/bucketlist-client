@@ -14,7 +14,7 @@ class List extends React.Component {
     this.state = {
       list: [],
       currentPage: 1,
-      itemsPerPage: 5
+      itemsPerPage: 4
     }
   }
 
@@ -44,13 +44,19 @@ class List extends React.Component {
 
   handleClick = (index) => {
     // making a copy of the list of items
-    const copyList = this.state.list
+    console.log('This is the state', this.state.list)
+    const updatedObject = Object.assign({}, this.state.list[index])
+    console.log(updatedObject)
+    const copyList = this.state.list.slice()
+    console.log('This is the copy', copyList)
+    console.log('This is isCompleted on secleted object', updatedObject.isCompleted)
+    updatedObject.isCompleted = !updatedObject.isCompleted
+    console.log('Did I change', updatedObject)
     // finding the targeted item in the copy array and then setting the value of
     // isCompleted on the targeted item to the opposite
-    copyList[index] = { ...copyList[index],
-      isCompleted: !copyList[index].isCompleted }
-
-    this.setState({ list: copyList })
+    copyList.splice(index, 1, updatedObject)
+    console.log('I am the copyList[index] that was clicked', copyList[index])
+    this.setState({ list: copyList }, () => console.log('I am the updated state....', this.state.list))
 
     axios({
       url: apiUrl + '/items/' + event.target.id,

@@ -3,7 +3,6 @@ import React from 'react'
 import Pagination from 'react-bootstrap/Pagination'
 
 const PaginationButtons = (props) => {
-  console.log('heyyyyyyyy')
   const { totalItems, itemsPerPage, paginate, currentPage } = props
   const pageNumbers = []
 

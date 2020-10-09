@@ -46,6 +46,7 @@ class App extends Component {
             message={msgAlert.message}
           />
         ))}
+        <Route exact path='/' msgAlert={this.msgAlert} component={WelcomeButtons} />
         <main className="container">
           <Route exact path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
@@ -71,7 +72,6 @@ class App extends Component {
           <AuthenticatedRoute exact user={user} path='/item/:id/edit' render={() => (
             <ItemEdit msgAlert={this.msgAlert} user={user} />
           )} />
-          <Route exact path='/' component={WelcomeButtons} />
         </main>
       </Fragment>
     )
