@@ -7,8 +7,8 @@ class WelcomeButtons extends Component {
     return (
       <div className='welcome-buttons-div'>
         <h1>BUCKET LIST!!!!!!</h1>
-        <Link to='/sign-up'><Button variant="dark" className='welcome-button1'>Sign Up</Button></Link>
-        <Link to='/sign-in'><Button variant="dark" className='welcome-button2'>Sign In</Button></Link>
+        <Link to='/sign-up'><Button variant="dark" className='welcome-button'>Sign Up</Button></Link>
+        <Link to='/sign-in'><Button variant="dark" className='welcome-button'>Sign In</Button></Link>
       </div>
     )
   }

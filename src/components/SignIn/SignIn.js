@@ -80,7 +80,7 @@ class SignIn extends Component {
             >
               Submit
             </Button>
-            <Link to='/sign-up'>Need to sign up?</Link>
+            <Link to='/sign-up' className='itemLink'>Need to sign up?</Link>
           </Form>
         </div>
       </div>

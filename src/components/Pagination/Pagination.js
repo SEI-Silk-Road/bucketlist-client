@@ -1,26 +1,31 @@
 import React from 'react'
 
-const Pagination = (props) => {
+import Pagination from 'react-bootstrap/Pagination'
+
+const PaginationButtons = (props) => {
   console.log('heyyyyyyyy')
-  const { totalItems, itemsPerPage, paginate } = props
+  const { totalItems, itemsPerPage, paginate, currentPage } = props
   const pageNumbers = []
 
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pageNumbers.push(i)
   }
   return (
-    <div className='pagination justify-content-center'>
-      {pageNumbers.map(number => (
-        <li key={number} className='page-item'>
-          <button onClick={() => paginate(number)}
-            className='page-link badge badge-secondary p-2'
+    <div>
+      <Pagination className='justify-content-center'>
+        {pageNumbers.map(number => (
+          <Pagination.Item
+            key={number}
+            className='page-item paginationButtons'
+            active={number === currentPage}
+            onClick={() => paginate(number)}
           >
             {number}
-          </button>
-        </li>
-      ))}
+          </Pagination.Item>
+        ))}
+      </Pagination>
     </div>
   )
 }
 
-export default Pagination
+export default PaginationButtons

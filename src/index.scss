@@ -18,7 +18,7 @@
   border: 20px solid #38A3A5;
 
   h1 {
-    text-align: center;
+   text-align: center;
    font-weight: normal;
    font-size: 2.6rem;
    letter-spacing: 0.05em;
@@ -44,14 +44,6 @@
     border-radius: 10px;
   };
 
-  a {
-    color: #FFF;
-
-    .number {
-      color: black;
-    }
-  };
-
   .edit-form {
     display: block;
     padding-left: 35px;
@@ -65,14 +57,16 @@
   padding-top: 250px;
 }
 
-.welcome-button1 {
+.welcome-button {
   border: outset;
   margin: 7px;
   padding: 17px;
 }
 
-.welcome-button2 {
-  border: outset;
-  margin: 7px;
-  padding: 17px;
+.itemLink {
+  color: #FFF;
+}
+
+.paginationButtons {
+  color: black;
 }

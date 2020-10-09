@@ -84,6 +84,7 @@ class List extends React.Component {
           <ItemsOnCurrentPage currentPage={this.state.currentPage} currentItems={currentItems} handleClick={this.handleClick}/>
         </ul>
         <Pagination
+          currentPage={this.state.currentPage}
           paginate={this.paginate}
           itemsPerPage={this.state.itemsPerPage}
           totalItems={this.state.list.length}
