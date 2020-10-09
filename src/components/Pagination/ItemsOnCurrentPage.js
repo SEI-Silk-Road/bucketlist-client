@@ -5,7 +5,8 @@ const ItemsOnCurrentPage = (props) => {
   // take currentItems array and handleClick function in props
   // currentItems to run map function
   // handleClick to use the function handleClick in List.js file
-  const { currentItems, handleClick } = props
+  const { currentItems, handleClick, itemsPerPage, currentPage } = props
+  const addOn = itemsPerPage * (currentPage - 1)
 
   return (
     <div>
@@ -19,7 +20,7 @@ const ItemsOnCurrentPage = (props) => {
             id={item._id}
             readOnly
             checked={item.isCompleted}
-            onClick={() => handleClick(index)} />
+            onClick={() => handleClick(index + addOn)} />
         </li>
       ))}
     </div>

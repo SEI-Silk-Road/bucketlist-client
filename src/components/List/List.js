@@ -44,19 +44,12 @@ class List extends React.Component {
 
   handleClick = (index) => {
     // making a copy of the list of items
-    console.log('This is the state', this.state.list)
-    const updatedObject = Object.assign({}, this.state.list[index])
-    console.log(updatedObject)
     const copyList = this.state.list.slice()
-    console.log('This is the copy', copyList)
-    console.log('This is isCompleted on secleted object', updatedObject.isCompleted)
-    updatedObject.isCompleted = !updatedObject.isCompleted
-    console.log('Did I change', updatedObject)
     // finding the targeted item in the copy array and then setting the value of
     // isCompleted on the targeted item to the opposite
-    copyList.splice(index, 1, updatedObject)
-    console.log('I am the copyList[index] that was clicked', copyList[index])
-    this.setState({ list: copyList }, () => console.log('I am the updated state....', this.state.list))
+    copyList[index].isCompleted = !copyList[index].isCompleted
+
+    this.setState({ list: copyList })
 
     axios({
       url: apiUrl + '/items/' + event.target.id,
@@ -87,7 +80,10 @@ class List extends React.Component {
         <ul>
           <h1>Your Bucket List</h1>
           {/* Call the component to show items based on current page */}
-          <ItemsOnCurrentPage currentPage={this.state.currentPage} currentItems={currentItems} handleClick={this.handleClick}/>
+          <ItemsOnCurrentPage currentPage={this.state.currentPage}
+            currentItems={currentItems}
+            handleClick={this.handleClick}
+            itemsPerPage={this.state.itemsPerPage}/>
         </ul>
         <Pagination
           currentPage={this.state.currentPage}
