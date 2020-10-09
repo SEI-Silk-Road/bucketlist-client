@@ -10,9 +10,9 @@ const ItemsOnCurrentPage = (props) => {
   return (
     <div>
       {currentItems.map((item, index) => (
-        <li className='items' key={item._id}>
-          <Link to={`/item/${item._id}`} className={item.isCompleted ? 'complete itemLink' : 'itemLink'}>
-            {item.title}
+        <li className={item.isCompleted ? 'dimmed items' : 'items'} key={item._id}>
+          <Link to={`/item/${item._id}`} className='itemLink'>
+            <span className={item.isCompleted ? 'complete' : ''}>{item.title}</span>
           </Link>
           <input
             type='checkbox'

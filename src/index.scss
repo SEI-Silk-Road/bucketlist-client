@@ -3,9 +3,10 @@
   background-color: #191A24;
 }
 
-.complete {
-  text-decoration: line-through;
-  // animation:strikeitem .3s ease-out 0s forwards;
+
+
+.dimmed {
+  opacity: 0.6
 }
 
 .box {
@@ -17,6 +18,27 @@
   border-radius: 15px;
   border: 20px solid #38A3A5;
 
+  @keyframes strike{
+    from { width : 0; }
+    to { width:calc(100% + 1rem); }
+  };
+  .complete {
+    position: relative;
+  };
+  .complete::after {
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left:-.5rem;
+    width: 100%;
+    height: 2px;
+    background: #FFF;
+    animation-name: strike;
+    animation-duration: 0.3s;
+    // animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  };
   h1 {
    text-align: center;
    font-weight: normal;

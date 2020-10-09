@@ -19,14 +19,17 @@ class Background extends Component {
     unsplash.photos.getRandomPhoto({ collections: [4961056, 235549, 17098], orientation: 'landscape' })
       .then(toJson)
       .then(json => {
-        console.log('This is the json', json.urls.regular)
         this.setState({ imgUrl: json.urls.regular })
       })
-      .catch(console.error)
+      .catch(() => (
+        this.props.msgAlert({
+          heading: 'Failure',
+          variant: 'danger',
+          message: 'Error 404!!!!!!'
+        })))
   }
 
   render () {
-    console.log('This is the state', this.state.imgUrl)
     return (
       <div className='bgDiv'>
         <img src={this.state.imgUrl} alt="Random pic from Unsplash" className="background" />
