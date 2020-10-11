@@ -32,7 +32,7 @@ class ChangePassword extends Component {
         message: messages.changePasswordSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      .then(() => history.push('/list'))
       .catch(error => {
         this.setState({ oldPassword: '', newPassword: '' })
         msgAlert({
@@ -47,7 +47,7 @@ class ChangePassword extends Component {
     const { oldPassword, newPassword } = this.state
 
     return (
-      <div className="row">
+      <div className="row box">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
           <h3>Change Password</h3>
           <Form onSubmit={this.onChangePassword}>
@@ -74,7 +74,7 @@ class ChangePassword extends Component {
               />
             </Form.Group>
             <Button
-              variant="primary"
+              className='button'
               type="submit"
             >
               Submit

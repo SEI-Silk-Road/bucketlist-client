@@ -1,1 +1,119 @@
 @import '~bootstrap/scss/bootstrap';
+.nav{
+  background-color: #191A24;
+}
+
+
+
+.dimmed {
+  opacity: 0.6
+}
+
+.box {
+	margin: 4rem auto;
+	padding: 3rem 5rem 3rem 3rem;
+	max-width: 650px;
+  background: #191A24;
+	color: #FFF;
+  border-radius: 15px;
+  border: 20px solid #38A3A5;
+
+  @keyframes strike{
+    from { width : 0; }
+    to { width:calc(100% + 1rem); }
+  };
+  .complete {
+    position: relative;
+  };
+  .complete::after {
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left:-.5rem;
+    width: 100%;
+    height: 2px;
+    background: #FFF;
+    animation-name: strike;
+    animation-duration: 0.3s;
+    // animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  };
+  h1 {
+   text-align: center;
+   font-weight: normal;
+   font-size: 2.6rem;
+   letter-spacing: 0.05em;
+   border-bottom: 3px solid rgba(255,255,255,.3);
+  };
+
+  .button {
+    background-color: white;
+    border-color: white;
+    color: rgba(120,127,135,1);
+    border: outset;
+    margin: 7px;
+    padding: 5px;
+  };
+
+  .items {
+    display: flex;
+    margin: 3px;
+    padding: 1.1rem 3rem;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+  };
+
+  .edit-form {
+    display: block;
+    padding-left: 35px;
+  }
+}
+
+.welcome-buttons-div {
+  text-align: center;
+  width: 100%;
+  height: 500px;
+  padding-top: 150px;
+  color: #F2F4FF;
+  text-shadow: 2px 2px #191A24;
+}
+
+.welcome-button {
+  border: outset;
+  margin: 7px;
+  padding: 17px;
+}
+
+.itemLink {
+  color: #FFF;
+}
+
+.paginationButtons {
+  color: black;
+}
+
+.bgDiv {
+  display: inline-block;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.background {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  object-fit: cover;
+}
+
+.navImage {
+  width: 50%;
+  height: auto;
+}
