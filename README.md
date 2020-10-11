@@ -48,7 +48,6 @@ Allow users to upload an image when they complete an item.
 ### Unsolved Problems
 
 - While our app is now functioning almost exactly as we want it to, we did come short of some of our lofty reach goals. We were hoping to integrate with a maps API so users could document where they plan to or did reach any of their life goals, but this proved to be something we could not incorporate without compromising the more essential features of our app. We would still like to find a way to add a feature to pin location for list items, and ideally make this application a social site where users can see, comment on, and get inspiration from the bucket lists of others.
-- Last, we are still working on a way to perfect the pagination, so that only a few pages are shown at a time, with an arrow or skip forward button controling the ability to select a page after the first few. As of now, the page numbers will all be listed on the same page -- it is not a bug for users, but another challenge we want to solve.
 
 ## Images
 
