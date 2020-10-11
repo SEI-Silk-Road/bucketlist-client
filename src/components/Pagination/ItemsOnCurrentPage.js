@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 
 const ItemsOnCurrentPage = (props) => {
   // take currentItems array and handleClick function in props
-  // currentItems to run map function
   // handleClick to use the function handleClick in List.js file
   const { currentItems, handleClick, itemsPerPage, currentPage } = props
+
+  // since the items in currentItems have different index than what they should
+  // have in list array, calculating the different and add them on later
   const addOn = itemsPerPage * (currentPage - 1)
 
   return (
