@@ -5,7 +5,7 @@ This application allows the user create a list of the things they have always wa
 ## Important Links
 
 - [Deployed API](https://gentle-journey-02010.herokuapp.com/)
-- [Deployed Client](www.link.com)******
+- [Deployed Client](https://sei-silk-road.github.io/bucketlist-client/)
 
 ## Planning Story
 
