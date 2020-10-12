@@ -45,7 +45,7 @@ const PaginationButtons = (props) => {
 
   // building previous button
   let previous = ''
-  if (currentPage !== 1) {
+  if (currentPage > 1) {
     previous = (
       <Pagination.Item
         className='page-item paginationButtons'
@@ -58,7 +58,7 @@ const PaginationButtons = (props) => {
 
   // building next button
   let next = ''
-  if (currentPage !== numberOfPages) {
+  if (currentPage < numberOfPages) {
     next = (
       <Pagination.Item
         className='page-item paginationButtons'
@@ -68,8 +68,11 @@ const PaginationButtons = (props) => {
       </Pagination.Item>
     )
   }
-  return (
-    <div>
+
+  // building buttons
+  let allButtons = ''
+  if (numberOfPages > 1) {
+    allButtons = (
       <Pagination className='justify-content-center'>
         {previous}
         {pageNumbers.map(number => (
@@ -84,6 +87,11 @@ const PaginationButtons = (props) => {
         ))}
         {next}
       </Pagination>
+    )
+  }
+  return (
+    <div>
+      {allButtons}
     </div>
   )
 }
