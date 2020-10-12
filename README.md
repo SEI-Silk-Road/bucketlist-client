@@ -49,5 +49,4 @@ Allow users to upload an image when they complete an item.
 
 - While our app is now functioning almost exactly as we want it to, we did come short of some of our lofty reach goals. We were hoping to integrate with a maps API so users could document where they plan to or did reach any of their life goals, but this proved to be something we could not incorporate without compromising the more essential features of our app. We would still like to find a way to add a feature to pin location for list items, and ideally make this application a social site where users can see, comment on, and get inspiration from the bucket lists of others.
 
-#### Wireframe:
-![wireframe](https://imgur.com/a/hE7w9S7)
+#### Wireframe: <https://imgur.com/a/hE7w9S7>
