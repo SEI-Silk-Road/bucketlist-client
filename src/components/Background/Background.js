@@ -16,7 +16,7 @@ class Background extends Component {
   }
 
   componentDidMount () {
-    unsplash.photos.getRandomPhoto({ collections: [4961056, 235549, 17098], orientation: 'landscape' })
+    unsplash.photos.getRandomPhoto({ collections: [4717074, 3530818], orientation: 'landscape' })
       .then(toJson)
       .then(json => {
         this.setState({ imgUrl: json.urls.regular })
