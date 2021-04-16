@@ -12,7 +12,6 @@ Keep track of your life's dreams!
 * [User Stories](#user-stories)
 * [Unsolved Problems](#unsolved-problems)
 * [Images](#images)
-* [Authentication](#authentication)
 * [Reach Goals](#reach-goals)
 * [Our Team](#our-team)
 
